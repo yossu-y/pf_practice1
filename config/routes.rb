@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  namespace :user do
+    get 'homes/top'
+    get 'homes/about'
+  end
   # 利用者用ルーティング
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
