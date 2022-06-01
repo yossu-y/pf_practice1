@@ -6,9 +6,12 @@ Rails.application.routes.draw do
     get "about" => "homes#about", as: "about"
     
     get "users/unsubscribe" => "users#unsubscribe"
-    patch "users/withdraw"  => "users#withdraw"
     get "users/my_page"     => "users#show"
+    patch "users/withdraw"  => "users#withdraw"
+    # resourcesにする必要あり？
     resource :users, only: [:edit, :update]
+    
+    resources :articles, only: [:index, :show, :edit, :create, :destroy, :update]
     
   end
   
