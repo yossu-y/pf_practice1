@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get "users/my_page"     => "users#show"
     patch "users/withdraw"  => "users#withdraw"
     # resourcesにする必要あり？
-    resource :users, only: [:edit, :update]
+    resources :users, only: [:edit, :update, :show]
     
     resources :articles, only: [:index, :new, :show, :edit, :create, :destroy, :update]
     

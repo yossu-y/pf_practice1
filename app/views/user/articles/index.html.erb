@@ -3,13 +3,14 @@
 <% @articles.each do |article| %>
   <div class="card">
     <div class="cart-img-top">
-      
       <%= link_to article_path(article.id) do %>
+        <%= image_tag article.image, size: "50×50", class: "card-img-top img-fluid my-1" %>
       <% end %>
       <div class="card-body">
         <p class="card-title">
           <%= link_to article.title, class: "article_#{article.id}" %>
         </p>
+        <%= image_tag article.user.get_profile_image, class:"rounded-circle", size:"40x40" %>
             <%= article.user.screen_name %>
       </div>
       
