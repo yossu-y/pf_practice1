@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     # resourcesにする必要あり？
     resource :users, only: [:edit, :update]
     
-    resources :articles, only: [:index, :show, :edit, :create, :destroy, :update]
+    resources :articles, only: [:index, :new, :show, :edit, :create, :destroy, :update]
     
   end
   
