@@ -1,19 +1,27 @@
 class User::ArticlesController < ApplicationController
-  before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   
-  def show
-  end
-
   def index
+    @articles = Article.all
   end
   
   def new
+    @article = Article.new
   end
-
+  
+  def show
+  end
+  
   def create
+   @article = current_user.articles.new(article_params)
+    if @article.save
+      redirect_to article_path(@article)
+    else
+      @articles = Article.all
+      render "index"
+    end
   end
-
+  
   def edit
   end
 
@@ -26,11 +34,15 @@ class User::ArticlesController < ApplicationController
   private
 
   def article_params
+    params.require(:article).permit(:image, :title, :body)
   end
 
-  private
-
   def ensure_correct_user
+    @article = Article.find(params[:id])
+    @user = @article.user
+    redirect_to(articles_path) unless @user == current_user
   end
   
 end
+
+

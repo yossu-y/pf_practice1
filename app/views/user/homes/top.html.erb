@@ -4,7 +4,7 @@
 <p>ログイン</p>
 <%= link_to "利用者新規登録", new_user_registration_path %>
 <%= link_to "利用者ログイン", new_user_session_path %>
-<%= link_to "利用者ログアウト", destroy_user_session_path %>
+<%= link_to "利用者ログアウト", destroy_user_session_path, method: :delete %>
 
 <p>管理者ログイン</p>
 <%= link_to "管理者ログイン", new_admin_session_path %>

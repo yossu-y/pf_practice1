@@ -1,0 +1,19 @@
+<h5>投稿一覧</h5>
+
+<% @articles.each do |article| %>
+  <div class="card">
+    <div class="cart-img-top">
+      
+      <%= link_to article_path(article.id) do %>
+      <% end %>
+      <div class="card-body">
+        <p class="card-title">
+          <%= link_to article.title, class: "article_#{article.id}" %>
+        </p>
+            <%= article.user.screen_name %>
+      </div>
+      
+    </div>
+  </div>
+  
+<% end %>
