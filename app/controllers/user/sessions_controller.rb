@@ -21,14 +21,14 @@ class User::SessionsController < Devise::SessionsController
   protected
 
   def after_sign_in_path_for(resource)
-    root_path
+    users_my_page_path
   end
 
   def after_sign_out_path_for(resource)
     root_path
   end
 
-  def customer_state
+  def user_state
     @user = User.find_by(email: params[:user][:email])
     return if !@user
     if @user.valid_password?(params[:user][:password]) && @user.is_deleted
