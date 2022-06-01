@@ -5,6 +5,11 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "about" => "homes#about", as: "about"
     
+    get "customers/unsubscribe" => "customers#unsubscribe"
+    patch "customers/withdraw"  => "customers#withdraw"
+    get "customers/my_page"     => "customers#show"
+    resource :customers, only: [:edit, :update]
+    
   end
   
   devise_for :users,skip: [:passwords], controllers: {
